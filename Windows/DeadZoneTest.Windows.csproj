@@ -42,6 +42,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DeadZoneSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\externals\HadoukInput\Windows\HadoukInput.Windows.csproj">
       <Project>{85D723F7-83EF-4C75-82BA-9385D0AC8448}</Project>
       <Name>HadoukInput.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\externals\BasicPrimitiveBuddy\Windows\BasicPrimitiveBuddy.Windows.csproj">
+      <Project>{0FAA1286-7BFA-4765-8B51-62E438CB121D}</Project>
+      <Name>BasicPrimitiveBuddy.Windows</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

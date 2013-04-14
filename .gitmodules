@@ -11,3 +11,6 @@
 [submodule "externals/XNA"]
 	path = externals/XNA
 	url = https://github.com/dmanning23/XnaCompiledResources.git
+[submodule "externals/BasicPrimitiveBuddy"]
+	path = externals/BasicPrimitiveBuddy
+	url = https://github.com/dmanning23/BasicPrimitiveBuddy.git
