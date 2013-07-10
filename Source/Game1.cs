@@ -52,21 +52,6 @@ namespace DeadZoneTest
 			graphics.IsFullScreen = false;
 			
 			_controllers = new DeadZoneSample[(int)DeadZoneType.PowerCurve + 1];
-			
-			for (int i = 0; i < ((int)DeadZoneType.PowerCurve + 1); i++)
-			{
-				Vector2 position = Vector2.Zero;
-
-				//y position is center of screen
-				position.Y = (graphics.GraphicsDevice.Viewport.TitleSafeArea.Height / 2) + 180.0f;
-
-				//slice up screen so each dead zone drawn in its own thing
-				float xSlice = graphics.GraphicsDevice.Viewport.TitleSafeArea.Width / ((int)DeadZoneType.PowerCurve + 1);
-				position.X = ((i + 1) * xSlice);
-
-				//x position is 
-				_controllers[i] = new DeadZoneSample((DeadZoneType)i, position);
-			}
 		}
 
 		/// <summary>
@@ -92,6 +77,21 @@ namespace DeadZoneTest
 
 			// TODO: use this.Content to load your game content here
 			_text.LoadContent(Content, "ArialBlack10");
+
+			for (int i = 0; i < ((int)DeadZoneType.PowerCurve + 1); i++)
+			{
+				Vector2 position = Vector2.Zero;
+
+				//y position is center of screen
+				position.Y = (graphics.GraphicsDevice.Viewport.TitleSafeArea.Height / 2) + 180.0f;
+
+				//slice up screen so each dead zone drawn in its own thing
+				float xSlice = graphics.GraphicsDevice.Viewport.TitleSafeArea.Width / ((int)DeadZoneType.PowerCurve + 1);
+				position.X = ((i + 1) * xSlice);
+
+				//x position is 
+				_controllers[i] = new DeadZoneSample((DeadZoneType)i, position);
+			}
 		}
 
 		/// <summary>
@@ -124,8 +124,6 @@ namespace DeadZoneTest
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
 		{
-			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
-		
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 			
 			spriteBatch.Begin();

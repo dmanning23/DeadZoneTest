@@ -97,4 +97,18 @@
       <Name>Ouya.Console.Api</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="..\externals\XNA\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\ArialBlack10.xnb">
+      <Link>Assets\Content\ArialBlack10.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\externals\XNA\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\ArialBlack14.xnb">
+      <Link>Assets\Content\ArialBlack14.xnb</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\externals\XNA\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\TestFont.xnb">
+      <Link>Assets\Content\TestFont.xnb</Link>
+    </AndroidAsset>
+  </ItemGroup>
 </Project>
