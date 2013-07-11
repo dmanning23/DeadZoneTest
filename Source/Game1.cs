@@ -12,7 +12,7 @@ using FontBuddyLib;
 using GameTimer;
 using HadoukInput;
 
-namespace DeadZoneTest.Windows
+namespace DeadZoneTest
 {
 	/// <summary>
 	/// This is the main type for your game
