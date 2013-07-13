@@ -83,11 +83,11 @@ namespace DeadZoneTest
 				Vector2 position = Vector2.Zero;
 
 				//y position is center of screen
-				position.Y = (graphics.GraphicsDevice.Viewport.TitleSafeArea.Height / 2) + 180.0f;
+				position.Y = (graphics.GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
 
 				//slice up screen so each dead zone drawn in its own thing
 				float xSlice = graphics.GraphicsDevice.Viewport.TitleSafeArea.Width / ((int)DeadZoneType.PowerCurve + 1);
-				position.X = ((i + 1) * xSlice);
+				position.X = (i * xSlice) + (xSlice * 0.5f);
 
 				//x position is 
 				_controllers[i] = new DeadZoneSample((DeadZoneType)i, position);
@@ -128,15 +128,6 @@ namespace DeadZoneTest
 			
 			spriteBatch.Begin();
 
-			//draw the raw controller input
-			Vector2 textPos = new Vector2(graphics.GraphicsDevice.Viewport.TitleSafeArea.Center.X,
-			                              graphics.GraphicsDevice.Viewport.TitleSafeArea.Center.Y - 200.0f);
-			_text.Write("Raw controller input X: " + m_Input.m_CurrentGamePadStates[0].ThumbSticks.Left.X,
-			            textPos, Justify.Center, 1.0f, Color.White, spriteBatch, 0.0f);
-			textPos.Y += _text.Font.MeasureString("X").Y;
-			_text.Write("Raw controller input Y: " + m_Input.m_CurrentGamePadStates[0].ThumbSticks.Left.Y,
-			            textPos, Justify.Center, 1.0f, Color.White, spriteBatch, 0.0f);
-			
 			//draw the current state of each controller
 			foreach (DeadZoneSample controller in _controllers)
 			{
@@ -151,4 +142,3 @@ namespace DeadZoneTest
 		#endregion //Methods
 	}
 }
-
