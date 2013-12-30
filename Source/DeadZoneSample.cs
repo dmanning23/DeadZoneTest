@@ -61,26 +61,26 @@ namespace DeadZoneTest
 		public void Draw(FontBuddy text, SpriteBatch mySpriteBatch, GraphicsDevice graphics)
 		{
 			//draw the outline of the thumbstick
-			BasicPrimitive thumbstick = new BasicPrimitive(graphics);
-			thumbstick.Circle(Position, 100, Color.White, mySpriteBatch);
+			var thumbstick = new XNABasicPrimitive(graphics, mySpriteBatch);
+			thumbstick.Circle(Position, 100, Color.White);
 
 			//draw the thumbstick
-			Vector2 thumbstickPos = Controller.Thumbsticks.LeftThumbstickDirection * 100.0f;
-			thumbstick.Circle(Position + thumbstickPos, 10, Color.Blue, mySpriteBatch);
+			Vector2 thumbstickPos = Controller.Thumbsticks.LeftThumbstick.Direction * 100.0f;
+			thumbstick.Circle(Position + thumbstickPos, 10, Color.Blue);
 
 			//write the deadzone type above the thumbstick
 			Vector2 textPos = new Vector2(Position.X, Position.Y - 150.0f);
-			text.Write(Controller.Thumbsticks.ThumbstickScrubbing.ToString(),
+			text.Write(Controller.Thumbsticks.LeftThumbstick.ThumbstickScrubbing.ToString(),
 			           textPos, Justify.Center, 1.0f, Color.White, mySpriteBatch, 0.0f);
 
 			//write the raw output below the thing
 			textPos = new Vector2(Position.X, Position.Y + 100.0f);
-			text.Write("X: " + Controller.Thumbsticks.LeftThumbstickDirection.X.ToString(),
+			text.Write("X: " + Controller.Thumbsticks.LeftThumbstick.Direction.X.ToString(),
 			           textPos, Justify.Center, 1.0f, Color.White, mySpriteBatch, 0.0f);
 
 			textPos.Y += text.Font.MeasureString("X").Y;
 
-			text.Write("Y: " + Controller.Thumbsticks.LeftThumbstickDirection.Y.ToString(),
+			text.Write("Y: " + Controller.Thumbsticks.LeftThumbstick.Direction.Y.ToString(),
 			           textPos, Justify.Center, 1.0f, Color.White, mySpriteBatch, 0.0f);
 		}
 	}

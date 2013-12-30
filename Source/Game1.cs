@@ -104,7 +104,7 @@ namespace DeadZoneTest
 		{
 			// Allows the game to exit
 			if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) ||
-			    Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Escape))
+			    Keyboard.GetState().IsKeyDown(Keys.Escape))
 			{
 				this.Exit();
 			}
