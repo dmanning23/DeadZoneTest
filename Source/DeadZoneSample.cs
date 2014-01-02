@@ -39,6 +39,7 @@ namespace DeadZoneTest
 		{
 			Controller = new ControllerWrapper(PlayerIndex.One);
 			Controller.Thumbsticks.ThumbstickScrubbing = eDeadZone;
+			Controller.UseKeyboard = true;
 			this.Position = position;
 		}
 
