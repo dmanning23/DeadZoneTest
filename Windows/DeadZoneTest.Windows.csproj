@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -6,11 +6,11 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C8DF1771-5CAE-4231-B3CA-B33E7EDC93D3}</ProjectGuid>
-    <ProjectTypeGuids>{9B831FEF-F496-498F-9FE8-180DA5CB4258};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>DeadZoneTest.Windows</RootNamespace>
-    <MonoGamePlatform>WindowsGL</MonoGamePlatform>
     <AssemblyName>DeadZoneTest.Windows</AssemblyName>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,7 +20,6 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -29,8 +28,23 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -49,10 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\externals\FontBuddy\Windows\FontBuddy.Windows.csproj">
@@ -71,14 +84,6 @@
       <Project>{0FAA1286-7BFA-4765-8B51-62E438CB121D}</Project>
       <Name>BasicPrimitiveBuddy.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj">
-      <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
-      <Name>Lidgren.Network.Windows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\externals\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
-      <Project>{7DE47032-A904-4C29-BD22-2D235E8D91BA}</Project>
-      <Name>MonoGame.Framework.WindowsGL</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\externals\XNA\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\ArialBlack10.xnb">
@@ -94,4 +99,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <Import Project="packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets" Condition="Exists('packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
