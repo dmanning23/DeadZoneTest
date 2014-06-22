@@ -11,6 +11,8 @@
     <AssemblyName>DeadZoneTest.Windows</AssemblyName>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>none</DebugType>
@@ -29,6 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +42,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <Optimize>true</Optimize>
@@ -45,6 +50,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <OutputPath>bin\Release\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -62,12 +68,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Icon.png" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\externals\BasicPrimitiveBuddy\Windows\BasicPrimitiveBuddy.Windows.csproj">
+      <Project>{0faa1286-7bfa-4765-8b51-62e438cb121d}</Project>
+      <Name>BasicPrimitiveBuddy.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\externals\Filename\Windows\Filename.Windows.csproj">
+      <Project>{2a84dfe8-75e0-4774-baaf-00629ed44405}</Project>
+      <Name>Filename.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\externals\FontBuddy\Windows\FontBuddy.Windows.csproj">
       <Project>{65B5BB5D-0C69-4DDB-8DE6-F6B91C41279D}</Project>
       <Name>FontBuddy.Windows</Name>
@@ -80,9 +95,9 @@
       <Project>{85D723F7-83EF-4C75-82BA-9385D0AC8448}</Project>
       <Name>HadoukInput.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\BasicPrimitiveBuddy\Windows\BasicPrimitiveBuddy.Windows.csproj">
-      <Project>{0FAA1286-7BFA-4765-8B51-62E438CB121D}</Project>
-      <Name>BasicPrimitiveBuddy.Windows</Name>
+    <ProjectReference Include="..\externals\MatrixExtensions\Windows\MatrixExtensions.Windows.csproj">
+      <Project>{e2c50d0b-a1c1-4f67-92cb-be0e587a3ce6}</Project>
+      <Name>MatrixExtensions.Windows</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
